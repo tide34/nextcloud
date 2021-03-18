@@ -21,7 +21,7 @@ jobs:
           name: Build nginx image
           command: docker build -t nginx:check ./web
      
-  check_docker_compose_up_command:
+  check_docker_compose_up_command_AND_main_page_availability:
      machine:
       image: ubuntu-2004:202101-01
      steps:
@@ -29,7 +29,11 @@ jobs:
       - run:
           name: Run docker-compose up command
           command: |
-             docker-compose up -d
+
+            docker-compose up -d
+            sleep 60
+            curl --cacert ./web/certs/domain.crt -I  https://cloud.example.com:8080/login | grep '200 OK'
+          
       - run:
           name: Add new URL in /etc/hosts file
           command: |
@@ -48,6 +52,7 @@ jobs:
              docker-compose logs > /tmp/log.txt
       - store_artifacts:
            path: /tmp/log.txt
+           
 workflows:
   check_container_environment:
     jobs:

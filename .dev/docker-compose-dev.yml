@@ -6,7 +6,6 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
     volumes:
-      - ./wait-for-it.sh:/wait-for-it.sh
       - db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=Aa1234
@@ -49,6 +48,6 @@ volumes:
 
 secrets:
   nextcloud_admin_password:
-    file: ./.dev/nextcloud_admin_password.txt        
+    file: ./nextcloud_admin_password.txt        
   nextcloud_admin_user:
-    file: ./.dev/nextcloud_admin_user.txt
+    file: ./nextcloud_admin_user.txt
