@@ -11,7 +11,7 @@ jobs:
         - run: ls web
         - docker/dockerlint:
             dockerfile: web/Dockerfile
-
+  
   check_docker_image_building:
     machine:
       image: ubuntu-2004:202101-01
@@ -26,6 +26,7 @@ jobs:
       image: ubuntu-2004:202101-01
      steps:
       - checkout
+      
       - run:
           name: Run docker-compose up command
           command: |
@@ -50,6 +51,7 @@ jobs:
              sleep 60
              curl --cacert ./web/certs/domain.crt -I  https://cloud.example.com:8080/login | grep '200 OK' 
              docker-compose logs > /tmp/log.txt
+             
       - store_artifacts:
            path: /tmp/log.txt
            
@@ -66,4 +68,3 @@ workflows:
       - check_docker_compose_up_command_AND_main_page_availability:
           requires:
              - check_docker_image_building
-           
