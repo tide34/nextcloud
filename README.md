@@ -9,6 +9,10 @@ Run next commands:
     
 1) Clone this repository:  
    git clone https://github.com/tide34/nextcloud.git  
+   cd nextcloud
+   
+   Create file with name nextcloud_admin_user.txt and put inside name of administrator account.
+   Create file with name nextcloud_admin_password.txt and put inside password of administrator account.
   
 2) Up all containers:  
    docker-compose up --build -d  
