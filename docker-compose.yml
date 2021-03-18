@@ -11,7 +11,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=Aa1234
     env_file:
-      - db.env
+      - .dev/db.env
 
   app:
     image: nextcloud:production-fpm-alpine
@@ -24,7 +24,7 @@ services:
       - NEXTCLOUD_ADMIN_PASSWORD_FILE=/run/secrets/nextcloud_admin_password
       - NEXTCLOUD_ADMIN_USER_FILE=/run/secrets/nextcloud_admin_user
     env_file:
-      - db.env
+      - .dev/db.env
     depends_on:
       - db
     secrets:
