@@ -63,7 +63,7 @@ workflows:
       - check_docker_image_building:
           requires:
             - lint
-      - check_docker_compose_up_command:
+      - check_docker_compose_up_command_AND_main_page_availability:
           requires:
              - check_docker_image_building
            
