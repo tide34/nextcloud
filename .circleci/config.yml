@@ -31,9 +31,10 @@ jobs:
           name: Run docker-compose up command
           command: |
              docker-compose up -d
-             sleep 60
+             cat /etc/hosts
              docker-compose logs > /tmp/log.txt
              sudo cat "127.0.0.1 cloud.example.com" >> /etc/hosts
+             sleep 60
              curl --cacert ./web/certs/domain.crt -I  https://cloud.example.com:8080 | grep '200 OK' 
       - store_artifacts:
            path: /tmp/log.txt
