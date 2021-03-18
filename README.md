@@ -24,8 +24,12 @@ Run next commands:
   
 5) Login into account as administrator with credential created before(see step 1).  
   
-6) Stop all containers:  
+6) To get rid of the error "The data base is missing some indexes... " use the following command:  
+  
+    docker exec -u 82 -it containerID /var/www/html/occ db:add-missing-indices  
+  
+7) Stop all containers:  
    docker-compose stop  
   
-7) Remove all containers:
+8) Remove all containers:
    docker-compose rm  
