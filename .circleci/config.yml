@@ -45,7 +45,7 @@ workflows:
     jobs:
       - lint:
           filters:
-             branch:
+             branches:
                only: /.*/
       - check_docker_image_building:
           requires:
