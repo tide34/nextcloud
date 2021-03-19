@@ -46,6 +46,7 @@ workflows:
       - lint:
           triggers:
              branch:
+               only: /.*/
       - check_docker_image_building:
           requires:
             - lint
