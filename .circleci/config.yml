@@ -8,7 +8,6 @@ jobs:
       executor: docker/machine
       steps:
         - checkout
-        - run: ls web
         - docker/dockerlint:
             dockerfile: web/Dockerfile
   
@@ -46,8 +45,6 @@ workflows:
     jobs:
       - lint:
           filters:
-            branches:
-              only: /.*/
       - check_docker_image_building:
           requires:
             - lint
