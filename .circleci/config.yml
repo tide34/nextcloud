@@ -44,7 +44,7 @@ workflows:
   check_container_environment:
     jobs:
       - lint:
-          triggers:
+          filters:
              branch:
                only: /.*/
       - check_docker_image_building:
